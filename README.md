@@ -6,6 +6,19 @@ potential to go into the official core-cl2 library.
 [![Master branch Build Status](https://travis-ci.org/chlorinejs/cl2-contrib.png?branch=master)](https://travis-ci.org/chlorinejs/cl2-contrib)
 [![Develop branch Build Status](https://travis-ci.org/chlorinejs/cl2-contrib.png?branch=develop)](https://travis-ci.org/chlorinejs/cl2-contrib)
 
+# Consume this package
+
+You need Java, NodeJS installed.
+
+Pull contrib-cl2 to your machine:
+```
+npm install contrib-cl2
+```
+Load the source file you want as normal. For example you want to load concurrency.cl2:
+```clojure
+(load-file "./path/to/node_modules/src/concurrency.cl2")
+```
+
 # Develop
 Ensure you have  installed Java and NPM. Starts watcher by typing:
 ```bash
