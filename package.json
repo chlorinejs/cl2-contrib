@@ -1,6 +1,6 @@
 {
     "name": "cl2-contrib",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "The ChlorineJS user contributions library.",
     "repository": {
         "type": "git",
