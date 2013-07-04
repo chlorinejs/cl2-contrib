@@ -1,11 +1,13 @@
 (defmacro do-interval
-  "Executes a block of code repeatedly, with a
-  fixed time delay between each execution."
+  "Executes a block of code repeatedly, with a fixed time delay between
+  each execution. Current scope (aka `this` object) is reserved."
   [time & body]
-  `(setInterval
-    (fn []
-      ~@body)
-    ~time))
+  `(let [this# this]
+     (setInterval
+      (fn [] (let [func# (fn [] ~@body)]
+               (.call func# this#)
+               nil))
+      ~time)))
 
 (defmacro add-interval
   "Assigns a do-interval to a symbol so that it can be removed
@@ -19,12 +21,15 @@
   `(clearInterval ~symbol))
 
 (defmacro do-timeout
-  "Executes a block of code after specified time."
+  "Executes a block of code after specified time. Current scope
+  (aka `this` object) is reserved."
   [time & body]
-  `(setTimeout
-    (fn []
-      ~@body)
-    ~time))
+  `(let [this# this]
+     (setTimeout
+      (fn [] (let [func# (fn [] ~@body)]
+               (.call func# this#)
+               nil))
+      ~time)))
 
 (defmacro add-timeout
   "Assigns a do-timeout to a symbol so that it can be removed
