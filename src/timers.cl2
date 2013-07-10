@@ -18,7 +18,8 @@
 (defmacro remove-interval
   "Removes a named interval."
   [symbol]
-  `(clearInterval ~symbol))
+  `(do (clearInterval ~symbol)
+       (set! ~symbol nil)))
 
 (defmacro do-timeout
   "Executes a block of code after specified time. Current scope
@@ -40,4 +41,5 @@
 (defmacro remove-timeout
   "Removes a named timeout."
   [symbol]
-  `(clearTimeout ~symbol))
+  `(do (clearTimeout ~symbol)
+       (set! ~symbol nil)))
